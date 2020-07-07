@@ -32,7 +32,7 @@ def create_article():
             print("db.session.add is ok!")
             db.session.commit()
             print('db.session.commit is ok!')
-            return redirect('/')
+            return redirect('/posts')
         except Exception as e:
             return "При добавлении статьи произошла ошибка: %e " %e
     else:
@@ -47,6 +47,18 @@ def index():
 @app.route('/about')
 def about():
     return render_template('about.html')
+    
+@app.route('/posts/<int:post_id>')
+def post_detail(post_id):
+    print("Зашли в post_detail. post_id={}".format(post_id))
+    article = Article.query.get(post_id)
+    print("Объект Article создан. Дальше возврат шаблона.")
+    return render_template('post-detail.html', article=article)
+    
+@app.route('/posts')
+def posts():
+    articles = Article.query.order_by(Article.date.desc()).all()
+    return render_template('posts.html', articles=articles)
 
 if __name__ == '__main__':
     app.run(debug=True)
