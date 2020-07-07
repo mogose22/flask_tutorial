@@ -8,6 +8,8 @@
 <div class="container">
  <h1 class="display-4">Все статьи на сайте</h1>
  
+ {% if articles|length > 0 %}
+ 
  {% for el in articles %}
   <div class="alert alert-info">
     <h2>{{ el.title }}</h2>
@@ -16,6 +18,10 @@
 	<a href="/posts/{{ el.id }}" class="btn btn-info">Детальнее</a>
   </div>
  {% endfor %}
+ 
+ {% else %} 
+ <p>У нас ещё нет статей на сайте</p>
+ {% endif %}
  
 </div>
 {% endblock %}
