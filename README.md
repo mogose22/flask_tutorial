@@ -1,6 +1,6 @@
 # flask_tutorial
-
-+ Setup python, pip, git.\n
+##### All usages are performed on the command line! Instructions for Windows, if you use linux- i think this project so easy for you:)
++ Setup python, pip, git.
 + Clone this project.
 + In project folder (flask_tutorial) use "pip install -r requirements.txt".
 + Install DB.
